@@ -4,27 +4,9 @@ pipeline {
         stage('cloning') { 
             steps {
                echo "cloning"
-                git 'https://github.com/said1024/jenkins3.git'
+                git branch: 'main', credentialsId: 'jenkinsTest', url: 'https://github.com/Oualitsen/optidial.git'
             }
         }
- stage('maven build') { 
-            steps {
-               echo "build"
-                sh "mvn clean package"
-            }
-        }
- stage('Test') {
-            steps {
-                echo "unit tests"
-                sh "mvn test"
-            }
-        }
- stage('Deploy') {
-            steps {
-                echo "deploy"
-                sh "java -jar $WORKSPACE'/target/jenkins_3_demo-0.0.1-SNAPSHOT.jar'"
-            }
-        }
-       
+
     }
 }
