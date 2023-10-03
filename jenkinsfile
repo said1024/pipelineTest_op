@@ -7,6 +7,12 @@ pipeline {
                 git branch: 'main', credentialsId: 'jenkinsTest', url: 'https://github.com/Oualitsen/optidial.git'
             }
         }
+ stage('maven build') { 
+            steps {
+               echo "build"
+                sh "mvn clean package"
+            }
+        }
 
     }
 }
